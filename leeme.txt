@@ -1,0 +1,4 @@
+sls deploy --stage dev
+sls deploy --stage dev -f register
+sls invoke local -f register -s dev --path event.json
+sls invoke local -f login -s dev --path event.json

@@ -17,10 +17,23 @@ functions:
           integration: lambda
           cors: true
   login:
-    handler: handler.publicEndpointLogin
+    handler: handler.login
     events:
       - http:
           path: api/login
+          method: get
+          integration: lambda
+          cors: true
+          request:
+            parameters:
+              querystrings:
+                user: true
+                password: true
+  register:
+    handler: handler.RegisterUser
+    events:
+      - http:
+          path: api/register-user
           method: get
           integration: lambda
           cors: true
