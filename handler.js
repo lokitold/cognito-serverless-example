@@ -27,6 +27,8 @@ module.exports.publicEndpoint = (event, context, cb) => {
 
 // Private API
 module.exports.privateEndpoint = (event, context, cb) => {
+  console.log(JSON.stringify(event));
+  console.log('test private');
   cb(null, { message: 'Only logged in users can see this' });
 };
 
