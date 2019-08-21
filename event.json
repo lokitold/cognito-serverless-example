@@ -1,0 +1,50 @@
+{
+    "body": {},
+    "method": "GET",
+    "principalId": "",
+    "stage": "dev",
+    "cognitoPoolClaims": {
+        "sub": ""
+    },
+    "enhancedAuthContext": {},
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate",
+        "Cache-Control": "no-cache",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "PE",
+        "Host": "q55v1sdu0e.execute-api.us-east-1.amazonaws.com",
+        "Postman-Token": "d90bde70-4bdd-4e57-a9fb-4bea9d6a6fa5",
+        "User-Agent": "PostmanRuntime/7.15.2",
+        "Via": "1.1 26c88c0e916228dda5c9471d3f86bfda.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "uQDrTBsUf1fCGhYAnwnS-KGOh-RrA8Cp-FbUsEGD1zu9gDF6i6AY1Q==",
+        "X-Amzn-Trace-Id": "Root=1-5d5dac40-84b83bf062f1bd840ddc05b8",
+        "X-Forwarded-For": "190.119.229.156, 52.46.17.86",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "query": {
+        "password": "America*01",
+        "user": "victor.rojas"
+    },
+    "path": {},
+    "identity": {
+        "cognitoIdentityPoolId": "",
+        "accountId": "",
+        "cognitoIdentityId": "",
+        "caller": "",
+        "sourceIp": "190.119.229.156",
+        "principalOrgId": "",
+        "accessKey": "",
+        "cognitoAuthenticationType": "",
+        "cognitoAuthenticationProvider": "",
+        "userArn": "",
+        "userAgent": "PostmanRuntime/7.15.2",
+        "user": ""
+    },
+    "stageVariables": {}
+}
