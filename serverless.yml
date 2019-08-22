@@ -6,6 +6,10 @@ provider:
   runtime: nodejs8.10
   region: us-east-1
   deploymentBucket: deploy-serverless-americatv
+  tracing:
+    apiGateway: true
+  logs:
+    restApi: true
 
 functions:
   publicEndpoint:

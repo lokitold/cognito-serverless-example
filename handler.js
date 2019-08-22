@@ -27,9 +27,19 @@ module.exports.publicEndpoint = (event, context, cb) => {
 
 // Private API
 module.exports.privateEndpoint = (event, context, cb) => {
+
   console.log(JSON.stringify(event));
-  console.log('test private');
-  cb(null, { message: 'Only logged in users can see this' });
+  console.log('test private2');
+
+  const response = {
+    statusCode: 200,
+    headers: {
+      'x-custom-header': 'My Header Value',
+    },
+    body: JSON.stringify( { message: 'Only logged in users can see this' }),
+  };
+
+  cb(null,  response );
 };
 
 module.exports.login = (event, context, cb) => {
