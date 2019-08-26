@@ -10,6 +10,15 @@ provider:
     apiGateway: true
   logs:
     restApi: true
+plugins:
+  - serverless-plugin-split-stacks
+custom:
+  splitStacks:
+    perFunction: true
+    perType: false
+    perGroupFunction: false
+    stackConcurrency: 5 # Controls if enabled and how much stacks are deployed in parallel. Disabled if absent.
+    resourceConcurrency: 10 # Controls how much resources are deployed in parallel. Disabled if absent.
 
 functions:
   publicEndpoint:

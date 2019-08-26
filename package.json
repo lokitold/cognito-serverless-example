@@ -11,5 +11,8 @@
     "node-fetch": "^2.6.0",
     "request": "^2.88.0"
   },
-  "author": "Shahzeb Khan"
+  "author": "Shahzeb Khan",
+  "devDependencies": {
+    "serverless-plugin-split-stacks": "^1.9.1"
+  }
 }
