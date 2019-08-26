@@ -24,6 +24,7 @@ const generatePolicy = (principalId, effect, resource) => {
     statementOne.Resource = resource;
     policyDocument.Statement[0] = statementOne;
     authResponse.policyDocument = policyDocument;
+    console.log('authResponse.:', JSON.stringify(authResponse));
   }
   return authResponse;
 };
@@ -58,6 +59,7 @@ module.exports.authorize = (event, context, cb) => {
             console.log('Unauthorized user:', err.message);
             cb('Unauthorized');
           } else {
+            console.log('decoded.:', decoded);
             cb(null, generatePolicy(decoded.sub, 'Allow', event.methodArn));
           }
         });
