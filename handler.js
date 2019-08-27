@@ -12,8 +12,8 @@ global.fetch = require('node-fetch');
 
 //const
 const poolData = {    
-  UserPoolId : "us-east-1_qMkyMMKnq", // Your user pool id here    
-  ClientId : "379e9oh8t2j2sfdcnnok0dttuu" // Your client id here
+  UserPoolId : "us-east-1_rgJMVMg9z", // Your user pool id here    
+  ClientId : "4m0uel55lb2vula7ql9fa62qtl" // Your client id here
   }; 
 const pool_region = 'us-east-1';
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
@@ -78,24 +78,34 @@ module.exports.login = (event, context, cb) => {
 
 module.exports.RegisterUser = (event, context, cb) => {
 
+  console.log(JSON.stringify(event));
+
+  //let body = JSON.parse(event.body) ;
+  let body = event.body ;
+  console.log(body);
+
   var attributeList = [];
-  attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"name",Value:"Prasad Jayashanka"}));
-  attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"preferred_username",Value:"jay"}));
-  attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"gender",Value:"male"}));
+  attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"name",Value: body.name }));
+  //attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"username",Value: body.username }));
+  attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"preferred_username",Value: body.username }));
+  attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"gender",Value: body.gender }));
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"birthdate",Value:"1991-06-21"}));
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"address",Value:"CMB"}));
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"profile",Value:"Admin"}))
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"locale",Value:"lima"}));
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"picture",Value:"foto.jpg"}));
-  attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"email",Value:"sampleEmail@gmail.com"}));
+  attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"email",Value: body.email}));
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"phone_number",Value:"+5412614324321"}));
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"custom:scope",Value:"admin"}));
 
-  userPool.signUp('sampleEmail@gmail.com', 'America*01', attributeList, null, function(err, result){
+  userPool.signUp(body.email, body.password, attributeList, null, function(err, result){
+      
       if (err) {
           console.log(err);
+          cb(JSON.stringify(err));
           return;
       }
+
       let cognitoUser = result.user;
       //console.log('user name is ' + cognitoUser.getUsername());
       cb(null, { message: 'user name is ' + cognitoUser.getUsername()});

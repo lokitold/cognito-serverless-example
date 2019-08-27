@@ -5,7 +5,7 @@ provider:
   name: aws
   runtime: nodejs8.10
   region: us-east-1
-  deploymentBucket: deploy-serverless-americatv
+  deploymentBucket: egp-deploy
   tracing:
     apiGateway: true
   logs:
@@ -47,7 +47,7 @@ functions:
     events:
       - http:
           path: api/register-user
-          method: get
+          method: post
           integration: lambda
           cors: true
           request:
