@@ -73,3 +73,4 @@ functions:
               - Authorization
               - X-Api-Key
               - X-Amz-Security-Token
+              - Access-Control-Allow-Origin

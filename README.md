@@ -4,6 +4,7 @@
     https://medium.com/@prasadjay/amazon-cognito-user-pools-in-nodejs-as-fast-as-possible-22d586c5c8ec
         #split stack 
         https://github.com/dougmoscrop/serverless-plugin-split-stacks
+    https://serverless.com/blog/cors-api-gateway-survival-guide/
 
 
 

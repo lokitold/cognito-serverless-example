@@ -34,7 +34,9 @@ module.exports.privateEndpoint = (event, context, cb) => {
   const response = {
     statusCode: 200,
     headers: {
-      'x-custom-header': 'My Header Value',
+      'x-custom-header': 'My Header Value2',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true
     },
     body: JSON.stringify( { message: 'Only logged in users can see this' }),
   };
