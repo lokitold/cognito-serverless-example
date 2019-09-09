@@ -10,6 +10,23 @@ provider:
     apiGateway: true
   logs:
     restApi: true
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "cognito-identity:*"
+      Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - "cognito-idp:*"
+      Resource: "*"
+  #apiGateway:
+    #restApiId: joe3n338p0
+    #restApiRootResourceId: ubqvh9yhnc # Optional
+    #websocketApiId: xxxxxxxxxx
+    #description: Api authenticatiom
+    #restApiResources:
+    #  /posts: xxxxxxxxxx
+    #  /categories: xxxxxxxxx
 plugins:
   - serverless-plugin-split-stacks
 custom:
@@ -78,6 +95,14 @@ functions:
     events:
       - http:
           path: api/refresh-token
+          method: post
+          integration: lambda
+          cors: true
+  update-password:
+    handler: handler.changeUserPassword
+    events:
+      - http:
+          path: api/update-password
           method: post
           integration: lambda
           cors: true
