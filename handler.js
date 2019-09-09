@@ -113,3 +113,35 @@ module.exports.RegisterUser = (event, context, cb) => {
   });
 
 }
+
+
+module.exports.RefreshToken= (event, context, cb) => {
+
+  console.log(JSON.stringify(event));
+  let body = event.body;
+
+  const RefreshToken = new AmazonCognitoIdentity.CognitoRefreshToken({RefreshToken: body.refresh_token});
+
+  const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+  const userData = {
+      Username: body.email,
+      Pool: userPool
+  };
+
+  const cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+
+  cognitoUser.refreshSession(RefreshToken, (err, session) => {
+      if (err) {
+          console.log(err);
+      } else {
+          let retObj = {
+              "access_token": session.accessToken.jwtToken,
+              "id_token": session.idToken.jwtToken,
+              "refresh_token": session.refreshToken.token,
+          }
+          cb(null, { message: 'Only logged in users can see this' , result : session });
+          //console.log(retObj);
+      }
+  })
+}

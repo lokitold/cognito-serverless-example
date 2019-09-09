@@ -73,3 +73,11 @@ functions:
               - Authorization
               - X-Api-Key
               - X-Amz-Security-Token
+  refresh:
+    handler: handler.RefreshToken
+    events:
+      - http:
+          path: api/refresh-token
+          method: post
+          integration: lambda
+          cors: true
