@@ -114,11 +114,14 @@ functions:
     environment: ${file(env.yml):${opt:stage,self:provider.stage}}
     vpc:
       securityGroupIds:
-        - sg-e0174685
+        - sg-26d89065
       subnetIds:
-        - subnet-4f9a5138
-        - subnet-8d7f6aa5
-        - subnet-00b34659
+        - subnet-0ee4cf44
+        - subnet-2f412573
+        - subnet-558b1032
+        - subnet-a14c2a8f
+        - subnet-c1732ece
+        - subnet-e14ee1df
     events:
       - http:
           path: api/testmongo
