@@ -106,3 +106,22 @@ functions:
           method: post
           integration: lambda
           cors: true
+  mongotest:
+    handler: handler.testDocumentDB
+    description: api testmongodb
+    memorySize: 3008
+    timeout: 300
+    environment: ${file(env.yml):${opt:stage,self:provider.stage}}
+    vpc:
+      securityGroupIds:
+        - sg-e0174685
+      subnetIds:
+        - subnet-4f9a5138
+        - subnet-8d7f6aa5
+        - subnet-00b34659
+    events:
+      - http:
+          path: api/testmongo
+          method: get
+          integration: lambda
+          cors: true 

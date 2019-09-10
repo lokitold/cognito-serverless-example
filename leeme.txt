@@ -19,4 +19,5 @@ sls deploy --stage dev2 -f auth
 sls deploy --stage dev2 -f update-password --aws-profile sbperu
 sls invoke local -f register -s dev2 --path event.json
 sls invoke local -f login -s dev2 --path event.json
+sls invoke local -f mongotest -s dev2 
 serverless logs -f update-password -t --startTime 1m -s dev2  --aws-profile sbperu

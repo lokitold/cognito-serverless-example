@@ -8,6 +8,7 @@ const request = require('request');
 const jwkToPem = require('jwk-to-pem');
 const jwt = require('jsonwebtoken');
 global.fetch = require('node-fetch');
+const MongoClient = require('mongodb').MongoClient;
 const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
 //
 
@@ -19,7 +20,6 @@ const poolData = {
 const pool_region = 'us-east-1';
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 //
-
 
 // Public API
 module.exports.publicEndpoint = (event, context, cb) => {
@@ -147,7 +147,6 @@ module.exports.RefreshToken= (event, context, cb) => {
   })
 }
 
-
 // Accept a POST with a JSON structure containing the
 // refresh token provided during the original user login, 
 // and an old and new password.
@@ -226,5 +225,44 @@ module.exports.changeUserPassword = (event, context, callback) => {
       });
     }
   });
+
+}
+
+
+
+module.exports.testDocumentDB = (event, context, callback) => {
+
+  console.log(JSON.stringify(event));
+  let body = event.body ;
+
+  var client = MongoClient.connect(
+    process.env.DATABASE, 
+    {
+      useNewUrlParser: true
+    },
+    
+    function(err, client) {
+
+        if(err)
+            throw err;
+
+        //Specify the database to be used
+        let db = client.db('test');
+        
+        //Specify the collection to be used
+        let col = db.collection('test');
+    
+        //Insert a single document
+        col.insertOne({'hello':'Amazon DocumentDB'}, function(err, result){
+          //Find the document that was previously written
+          col.findOne({'hello':'Amazon DocumentDB'}, function(err, result){
+            //Print the result to the screen
+            callback(null,result);
+            //Close the connection
+            client.close()
+          });
+       });
+    });
+
 
 }
