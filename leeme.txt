@@ -9,6 +9,9 @@ https://medium.com/@prasadjay/amazon-cognito-user-pools-in-nodejs-as-fast-as-pos
     #split stack 
     https://github.com/dougmoscrop/serverless-plugin-split-stacks
 
+    #mongo compact
+    https://docs.mongodb.com/compass/master/import-export/
+
 
 
 #comands 
