@@ -90,7 +90,6 @@ functions:
               - Authorization
               - X-Api-Key
               - X-Amz-Security-Token
-<<<<<<< HEAD
   refresh:
     handler: handler.RefreshToken
     events:
@@ -129,6 +128,3 @@ functions:
           method: get
           integration: lambda
           cors: true 
-=======
-              - Access-Control-Allow-Origin
->>>>>>> 0a0cbf7f2dc4b00fc2840a5a7a3fb25b695ff17f
