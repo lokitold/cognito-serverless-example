@@ -20,6 +20,7 @@ sls deploy --stage dev2 --aws-profile sbperu
 sls deploy --stage dev2 -f register
 sls deploy --stage dev2 -f auth
 sls deploy --stage dev2 -f update-password --aws-profile sbperu
+sls deploy --stage dev3 -f reset-password --aws-profile sbperu
 sls invoke local -f register -s dev2 --path event.json
 sls invoke local -f login -s dev2 --path event.json
 sls invoke local -f mongotest -s dev2 

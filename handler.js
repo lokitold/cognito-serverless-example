@@ -267,19 +267,47 @@ module.exports.testDocumentDB = (event, context, callback) => {
 
 }
 
-module.export.forgotPassword = (event,context,callback) =>{
+module.exports.resetPassword = (event,context,callback) =>{
+
+    // let cognitoUser = new AWSCognito.CognitoUser({
+    //     Username: username,
+    //     Pool: userPool
+    // });
+
+    var query = event.query;
+
+    var userData = {
+        Username : query.user,
+        Pool : userPool
+    };
+
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
 
     cognitoUser.forgotPassword({
         onSuccess: function (result) {
             console.log('call result: ' + result);
         },
         onFailure: function(err) {
-            alert(err);
+            console.log(err);
+
+            let response = {
+                'success': 'Failure',
+                'response_data': err // Always seems to be empty
+            }
+            callback(null,response);
+
         },
         inputVerificationCode() {
-            var verificationCode = prompt('Please input verification code ' ,'');
-            var newPassword = prompt('Enter new password ' ,'');
-            cognitoUser.confirmPassword(verificationCode, newPassword, this);
+
+            let response = {
+                'success': 'OK',
+                'response_data': 'se envió codigo de verficación' // Always seems to be empty
+            }
+            callback(null,response);
+
+            //var verificationCode = prompt('Please input verification code ' ,'');
+            //var newPassword = prompt('Enter new password ' ,'');
+            //cognitoUser.confirmPassword(verificationCode, newPassword, this);
         }
     });
 }
