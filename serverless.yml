@@ -136,3 +136,11 @@ functions:
           method: post
           integration: lambda
           cors: true
+  reset-confirm-password:
+    handler: handler.confirmPasswordReset
+    events:
+      - http:
+          path: api/reset-confirm-password
+          method: post
+          integration: lambda
+          cors: true

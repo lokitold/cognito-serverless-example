@@ -311,3 +311,34 @@ module.exports.resetPassword = (event,context,callback) =>{
         }
     });
 }
+
+module.exports.confirmPasswordReset = (event,context,callback) =>{
+
+    var query = event.query;
+    var verificationCode = query.verificationCode;
+    var newPassword = query.newPassword;
+
+    var userData = {
+        Username : query.user,
+        Pool : userPool
+    };
+
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+
+    cognitoUser.confirmPassword(verificationCode, newPassword, {
+        onFailure(err) {
+            let response = {
+                'success': 'Failure',
+                'response_data': err // Always seems to be empty
+            }
+            callback(null,response);
+        },
+        onSuccess() {
+            let response = {
+                'success': 'OK',
+                'response_data': 'la contraseña se actualizo correctamente' // Always seems to be empty
+            }
+            callback(null,response);
+        },
+    });
+}
