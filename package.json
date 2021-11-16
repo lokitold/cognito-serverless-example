@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "amazon-cognito-identity-js": "^3.0.15",
-    "aws-sdk": "^2.515.0",
+    "aws-sdk": "^2.814.0",
     "jsonwebtoken": "^7.4.3",
     "jwk-to-pem": "^1.2.6",
     "mongodb": "^3.3.2",
