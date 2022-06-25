@@ -9,7 +9,7 @@
     "jsonwebtoken": "^7.4.3",
     "jwk-to-pem": "^1.2.6",
     "mongodb": "^3.3.2",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "request": "^2.88.0"
   },
   "author": "Shahzeb Khan",
