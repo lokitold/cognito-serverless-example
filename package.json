@@ -6,7 +6,7 @@
   "dependencies": {
     "amazon-cognito-identity-js": "^3.0.15",
     "aws-sdk": "^2.515.0",
-    "jsonwebtoken": "^7.4.3",
+    "jsonwebtoken": "^9.0.0",
     "jwk-to-pem": "^1.2.6",
     "mongodb": "^3.3.2",
     "node-fetch": "^2.6.0",
